@@ -62,92 +62,93 @@ import org.springframework.*;
 
 
 @SpringBootApplication
-@RestController
 @EnableOAuth2Client
-@EnableAuthorizationServer
-@Order(6)
+@RestController
 public class Application extends WebSecurityConfigurerAdapter {
-
-	@Autowired
-	OAuth2ClientContext oauth2ClientContext;
-
-	@RequestMapping({ "/login", "/images", "/me", "/user" })
-	public Map<String, String> user(Principal principal) {
-		Map<String, String> map = new LinkedHashMap<>();
-		map.put("name", principal.getName());
-		return map;
-	}
-
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		// @formatter:off
-		http.antMatcher("/**").authorizeRequests().antMatchers("/", "/login**", "/webjars/**").permitAll().anyRequest()
-				.authenticated().and().exceptionHandling()
-				.authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/")).and().logout()
-				.logoutSuccessUrl("/").permitAll().and().csrf()
-				.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()).and()
-				.addFilterBefore(ssoFilter(), BasicAuthenticationFilter.class);
-		// @formatter:on
-	}
-
-	@Configuration
-	@EnableResourceServer
-	protected static class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
-		@Override
-		public void configure(HttpSecurity http) throws Exception {
-			// @formatter:off
-			http.antMatcher("/me").authorizeRequests().anyRequest().authenticated();
-			http.antMatcher("/images").authorizeRequests().anyRequest().authenticated();
-			// @formatter:on
-		}
-	}
-
+	//FUUUUUUUUUUUUU
+	  @Autowired
+	  OAuth2ClientContext oauth2ClientContext;
 	
+	  @RequestMapping({"/login", "/images"})
+	  public Principal user(Principal principal) {
+	    return principal;
+	  }
+	  
+	  @Override
+	  protected void configure(HttpSecurity http) throws Exception {
+	    http
+	      .antMatcher("/**")
+	      .authorizeRequests()
+	        .antMatchers("/", "/login**", "/webjars/**")
+	        .permitAll()
+	      .anyRequest()
+	        .authenticated()
+	        .and().logout().logoutSuccessUrl("/").permitAll()
+	        .and().csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+	        .and().addFilterBefore(ssoFilter(), BasicAuthenticationFilter.class);
+
+	  }
+
+	  private Filter ssoFilter() {
+
+		  CompositeFilter filter = new CompositeFilter();
+		  List<Filter> filters = new ArrayList<>();
+
+		  OAuth2ClientAuthenticationProcessingFilter facebookFilter = new OAuth2ClientAuthenticationProcessingFilter("/login/facebook");
+		  OAuth2RestTemplate facebookTemplate = new OAuth2RestTemplate(facebook(), oauth2ClientContext);
+		  facebookFilter.setRestTemplate(facebookTemplate);
+		  facebookFilter.setTokenServices(new UserInfoTokenServices(facebookResource().getUserInfoUri(), facebook().getClientId()));
+		  filters.add(facebookFilter);
+
+		  OAuth2ClientAuthenticationProcessingFilter githubFilter = new OAuth2ClientAuthenticationProcessingFilter("/login/github");
+		  OAuth2RestTemplate githubTemplate = new OAuth2RestTemplate(github(), oauth2ClientContext);
+		  githubFilter.setRestTemplate(githubTemplate);
+		  githubFilter.setTokenServices(new UserInfoTokenServices(githubResource().getUserInfoUri(), github().getClientId()));
+		  filters.add(githubFilter);
+
+		  filter.setFilters(filters);
+		  return filter;
+
+		}
+	  
+	  @Bean
+	  @ConfigurationProperties("facebook.client")
+	  public AuthorizationCodeResourceDetails facebook() {
+	    return new AuthorizationCodeResourceDetails();
+	  }
+	  
+	  @Bean
+	  @ConfigurationProperties("facebook.resource")
+	  public ResourceServerProperties facebookResource() {
+	    return new ResourceServerProperties();
+	  }
+	  
+	  @Bean
+	  @ConfigurationProperties("github.client")
+	  public AuthorizationCodeResourceDetails github() {
+	  	return new AuthorizationCodeResourceDetails();
+	  }
+
+	  @Bean
+	  @ConfigurationProperties("github.resource")
+	  public ResourceServerProperties githubResource() {
+	  	return new ResourceServerProperties();
+	  }
+	  
+	  @Bean
+	  public FilterRegistrationBean oauth2ClientFilterRegistration(
+	      OAuth2ClientContextFilter filter) {
+	    FilterRegistrationBean registration = new FilterRegistrationBean();
+	    registration.setFilter(filter);
+	    registration.setOrder(-100);
+	    return registration;
+	  }
+	  
+
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
     
-
-	@Bean
-	public FilterRegistrationBean oauth2ClientFilterRegistration(OAuth2ClientContextFilter filter) {
-		FilterRegistrationBean registration = new FilterRegistrationBean();
-		registration.setFilter(filter);
-		registration.setOrder(-100);
-		return registration;
-	}
-
-	@Bean
-	@ConfigurationProperties("github")
-	public ClientResources github() {
-		return new ClientResources();
-	}
-
-	@Bean
-	@ConfigurationProperties("facebook")
-	public ClientResources facebook() {
-		return new ClientResources();
-	}
-
-	private Filter ssoFilter() {
-		CompositeFilter filter = new CompositeFilter();
-		List<Filter> filters = new ArrayList<>();
-		filters.add(ssoFilter(facebook(), "/login/facebook"));
-		filters.add(ssoFilter(github(), "/login/github"));
-		filter.setFilters(filters);
-		return filter;
-	}
-
-	private Filter ssoFilter(ClientResources client, String path) {
-		OAuth2ClientAuthenticationProcessingFilter oAuth2ClientAuthenticationFilter = new OAuth2ClientAuthenticationProcessingFilter(
-				path);
-		OAuth2RestTemplate oAuth2RestTemplate = new OAuth2RestTemplate(client.getClient(), oauth2ClientContext);
-		oAuth2ClientAuthenticationFilter.setRestTemplate(oAuth2RestTemplate);
-		UserInfoTokenServices tokenServices = new UserInfoTokenServices(client.getResource().getUserInfoUri(),
-				client.getClient().getClientId());
-		tokenServices.setRestTemplate(oAuth2RestTemplate);
-		oAuth2ClientAuthenticationFilter.setTokenServices(tokenServices);
-		return oAuth2ClientAuthenticationFilter;
-	}
 
     @Bean
     CommandLineRunner init() {
@@ -158,20 +159,3 @@ public class Application extends WebSecurityConfigurerAdapter {
     }
 
 }
-class ClientResources {
-
-	@NestedConfigurationProperty
-	private AuthorizationCodeResourceDetails client = new AuthorizationCodeResourceDetails();
-
-	@NestedConfigurationProperty
-	private ResourceServerProperties resource = new ResourceServerProperties();
-
-	public AuthorizationCodeResourceDetails getClient() {
-		return client;
-	}
-
-	public ResourceServerProperties getResource() {
-		return resource;
-	}
-}
-

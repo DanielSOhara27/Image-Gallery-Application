@@ -72,5 +72,16 @@ public class HomeController {
         return "login";
     }
     
+    @RequestMapping(method = RequestMethod.GET, value = "/github/success")
+    public String githubLoginSuccess(RedirectAttributes redirectAttributes,
+                           @CookieValue(value = "JSESSIONID") String accessToken) {
+        
+        PreAuthenticatedAuthenticationToken auth = 
+                new PreAuthenticatedAuthenticationToken("github", accessToken, Arrays.asList(new SimpleGrantedAuthority("ROLE_USER")));
+            
+        SecurityContextHolder.getContext().setAuthentication(auth);
+              
+        return "redirect:/images";
+}
     
 }
