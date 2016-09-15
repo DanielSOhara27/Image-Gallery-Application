@@ -3,7 +3,8 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.3.5.RELEASE")
+        
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.0.RELEASE")
         classpath("io.spring.gradle:dependency-management-plugin:0.5.4.RELEASE")
     }
 }
@@ -42,7 +43,12 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     compile("commons-io:commons-io:2.4")
     compile('com.amazonaws:aws-java-sdk-s3')
+    compile("org.springframework.boot:spring-boot-starter-security")
+    compile("org.springframework.security.oauth:spring-security-oauth2")
+    compile("org.springframework.security:spring-security-config")
     testCompile("junit:junit")
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+    testCompile("org.springframework.security:spring-security-test")
 }
 
 task wrapper(type: Wrapper) {

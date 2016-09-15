@@ -32,8 +32,23 @@
 
     <div class="container">
 
-      <form class="form-signin" method="get" action="/images">
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in with GitHub</button>
+      <div>
+      	Facebook link here: <a href="/login/facebook">click here</a>
+      </div>
+      <div>
+    	With Github: <a href="/login/github">click here</a>
+  	  </div>
+      <br />
+      <p>
+      	or you can use the button instead
+      </p>
+      <br />
+      <form class="form-signin" method="get"   action="https://github.com/login/oauth/authorize">
+      	<button class="btn btn-lg btn-primary btn-block" type="submit" name="client_id" value="cc3ba39d2683bd3b59bc"> Sign in with Github</button>
+      </form>
+      
+       <form class="form-signin" method="get" action="/images">
+      	<button class="btn btn-lg btn-primary btn-block" type="submit"> Sign in with Github 2</button>
       </form>
 
     </div> <!-- /container -->
