@@ -72,7 +72,7 @@ public class HomeController {
         return "login";
     }
     
-    @RequestMapping(method = RequestMethod.GET, value = "/github/success")
+    @RequestMapping(method = RequestMethod.GET, value = "github/success")
     public String githubLoginSuccess(RedirectAttributes redirectAttributes,
                            @CookieValue(value = "JSESSIONID") String accessToken) {
         
