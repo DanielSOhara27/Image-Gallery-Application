@@ -22,11 +22,6 @@ import edu.cmu.iccb.services.ImageService;
 @Controller
 public class HomeController {
 	
-	//@Value("${cloud.github.credentials.ClientId}")
-	private String clientsecret="81e246b92b9a18b2b078708c7d122a5615dfd5c1";
-	
-	//@Value("${cloud.github.credentials.ClientS}")
-	private String clientid="cc3ba39d2683bd3b59bc";
 	
     private ImageService imageService;
     
@@ -72,7 +67,7 @@ public class HomeController {
         return "login";
     }
     
-    @RequestMapping(method = RequestMethod.GET, value = "github/success")
+    @RequestMapping(method = RequestMethod.GET, value = "/github/success")
     public String githubLoginSuccess(RedirectAttributes redirectAttributes,
                            @CookieValue(value = "JSESSIONID") String accessToken) {
         
