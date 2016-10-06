@@ -1,4 +1,4 @@
 ---
 applications:
 - name: dohara-image-gallery-0.1.0
-  path: ./build/libs
+  path: ./build/libs/image-gallery-0.1.0.jar
