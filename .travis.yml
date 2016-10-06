@@ -1,6 +1,9 @@
 language: java
-edge: true
+before_install:
+- chomod +x gradlew
+script: "./gradlew check"
 deploy:
+  edge: true
   provider: cloudfoundry
   api: https://api.run.pivotal.io
   username: seijiohara@cmu.edu
