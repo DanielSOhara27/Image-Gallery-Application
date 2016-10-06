@@ -1,21 +1,15 @@
 language: java
+edge: true
 deploy:
   provider: cloudfoundry
   api: https://api.run.pivotal.io
   username: seijiohara@cmu.edu
   password:
-    secure: "nUCAcNAf2X91et+lchGYQIuNjes8/7rVZzII20eiTsmdMKMYAPHZSq6KjzrPP/5fg/AX2qJfOgIFd59oEg0ADYxZ0tJsdBultQR9MhLB0t2HVT/duxc0as1t08MeNLkbnTcmxQNodROAZ9/l1u9Zjyjkw0NDf/ZdzEFe5qcjpUvdSjGSqR3bkRirhw822fyiVgaClkozUhWal6VPzCtuz+b3s+pPkNlFlHpSU9cDfQU/o9nY6UEiCPeY9C5ZmEcoUX/MG8bg6AcHcZODN3KncV6iFyeRlqQXBgU8Q80poI28s0BUVOSSPT2MdtUyaheBiMQQ06hKtmejLsGBQQr9TcXBDta+POlSb5ljQlLkvb0KknuPzh7nIGn+FRFq1odyLBhN+sBBfSeyorP0OghhpOzKQ5C8VfkDXkFrqecuZyz7VQ9yE13FzeT4p6qpLg4X1J5oM1pTDAsShoO6DNvydd+FugkNuwR8dshaIk04sUoCBhokcCz9h/rOmBbbPl4wbIB/PW+AsmInz+E3xm+yp1lSqSllqAPbaqhL6ddxJzg6LwlLPXCmByXnW0VCTGatWvKdNP8sn2JXG1aRpqR20NHXd8fZwHB7/CoP1VGdS0FelamKhT8Ou9spZ7WPjjaBY02sBMJAtFPK8eHsp03ejrXgBhVNKEpLa7N7Ks/UdjM="
+    secure: AnlLj5/6oy6OOYx9FWWbxW8CXzrVD1ZRj3vMnWpXTLhUmje1O0/RgsY+XcasEDQkYOAZcKT9FmL+oEyUIfSQRtb3PPVYVPXGIpnOqvZyOZo5eJ4fkHEwzTWumMGw166cP2A6Vcq0Zz1n3oYXdiE1k4TIGPv/9F+kp6IlrQfidhmbaGEnxEH2SQC6FWGsNiShUTpqffsEFM9NQ0JY2IxFPYBNiVdmlNtkUKlFMXXBRSQdD0XtGabFZZ12BtFQcKZspoDcI4GuZh5MH4i4gLh8DiI4Cnrcx2tSiHXTHeaFQ1z6bhyMw0r1kaRoGAscTB42hqx48cXmv+BBjdYErCBvPBQbXdaTKeU0lvYTOkw+0p1eLhOTXQqcfbOPGGwrtvv5dpZ29mKx6DokwNrtsbMz0hZOML2o+703Zm69pNPagXUF66nxvUtx2xBTsRhSkORPjGm+PMXxsWgEVrPqLn+0dGaSfGT5Wvv15T8t9m2FkOsHNkZ9XmKakW2AguHkyRhBecxOrfvz7y2LJnWA8z6raAh4F7mocqY1/4Ymm81gnZ3j96gbA5s2ZAHFStSCno4PE/KdW3Wl23d/742ig/XyVP6oVAfYOIQ6zPhi+C9zqCTIGgK+S8pO+wU+hbsM2+Hw33UWUReFWm2u6h66pHYW6zbFeWym6INWCuOQX1w2HDY=
   organization: seijiohara-cmu
-  space: development
+  space: deployment
   on:
     repo: DanielSOhara27/Image-Gallery-Application
     branch: hw2
-before_cache:
-- rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
-- rm -fr $HOME/.gradle/caches/*/plugin-resolution/
-cache:
-  directories:
-  - "$HOME/.gradle/caches/"
-  - "$HOME/.gradle/wrapper/"
 jdk:
 - oraclejdk8
