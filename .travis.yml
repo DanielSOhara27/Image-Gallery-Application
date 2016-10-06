@@ -1,12 +1,13 @@
 language: java
 jdk: oraclejdk8
 deploy:
- edge: true
- api: https://api.run.pivotal.io
- organization: seijiohara-cmu
- username: seijiohara@cmu.edu
- password: cloud123-CLASS
- provider: cloudfoundry
- space: development
-on:
- repo: DanielSOhara27/Image-Gallery-Application
+  edge: true
+  api: https://api.run.pivotal.io
+  organization: seijiohara-cmu
+  username: seijiohara@cmu.edu
+  password:
+    secure: aDMPW4Plj7t0T2g+mEaG6P/3uMy2dG3Ng9SYjaGlZDJcD6kncbg29dLJSLptpuPBCCZohQ5uFplz2efpOLJqanlSXzCzGw7BlwhrIUem4+DwASNSI8+vpxdKELnAH75ngAFtVhQHi1tp/zYec9+JkXM54qZMNsoRsxLwgx0x4SDdV+1L2d5Qm3E2igGJWSfGEnCGVMXSEKTwUjBP8xrNty+Ku17MVqUcM3LskmkvZHyfnK6PlrTPus2pBcLe70tFthgHagxaScS1MgmnSjdH0TpeZCRYYTXqeEEBSP4mpeKAlE9XfQO9mCnr/6fWRr7Cxi2HuY/5vKZCMz9iCQ8TZ8ZWEnlePME71xZf2Cdb9HxT0ViZf8q0IBIzHQu0mrDQEollgtpGL4whG0gnchyndgubt11lWEwsskOpZecotken2WdAfCQeG+X9qdLzhAoBD2OCGUWDKM4l+MdL8PeX0PkTFwA13ny9p29BapWiAPflj4tnce3acI5Ba9Tx99hZyFk/bN7TFi4pv1gPce9L0jh2sKEvOmDO9xM1JVLae+Ul792vvvxUO1xVLh0vlOcgTl1jhqnDSrwkNTvfvRvxFzJd0UVKwfdwkLFJU1XgchwMmMqGIPyvy7X4mDFX/sc03+bjZrfhK8+8p1dMVVU8F51yiNl2Bsom+tPdWMRcMQA=
+  provider: cloudfoundry
+  space: development
+true:
+  repo: DanielSOhara27/Image-Gallery-Application
