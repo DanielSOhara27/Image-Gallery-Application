@@ -4,8 +4,7 @@ deploy:
   edge: true
   api: https://api.run.pivotal.io
   organization: seijiohara-cmu
-  password:
-    secure: M2z7c8U53Decnm0YNOt0Nyzc4uIh1rOsk3ad4LB+0zECF8cEzj5QNvJQmFFJa8Ybput2qNKeFsACa2/xFUfuVsyikYgygv+MPALImU4qy74LFOFW9paFirzyrC23mI9cLlthGv1WeUwpE1Nuv0hTPase8McuPEyklYciWVKYfX+mhRlLYncasCycvdXhc/pMoIMDw8tGpnYULuk51YD5Pcj8j2FlpBvKBX2YmuJyTOl7c7xwlUiNoUeriG1r2PbEwwMQdZoD8+bL0rGAlZo+XGRibgXCcZQwF9zA0wOm3yHSlY86YeAiGjFdXG0Kma86HyxaASZk79tDsbjs+7Z2qSnv1wQqqMFMMnmieFI8MNnG6Nf2lAsk2zO0I2tWBxY2ZKlunmrsfLmJEgWcdAYH9aEEUTcYN1wz0NbshhXZmRWvQyujVGV8Me9RvSvjiYJlPCfp4tflZwnkrn1iA+FLaKWeaGpccVWfIUQIBQQuMBIOhyXzVf3dMQ1cT/WOhMAxWQEdRBgIR7MBQsi8jj4hHLKnGry7AUxkD5MjyA6ozQgNqs3otw7Vyyhpw10OzB/GLRIvu07QLlbZauKwM9p8pz+CnK58aoi3ODyGzgKDOR/lg0Tq+Bv+Odb2wusbcuy1KWAKZO9+EDxmEUa6G2rb7LIl4xRHva7tYcD2KgHVnAU=
+  password: cloud123-CLASS
   provider: cloudfoundry
   space: development
   username: seijohara@cmu.edu
