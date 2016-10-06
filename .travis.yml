@@ -2,16 +2,15 @@ language: java
 before_install:
 - chmod +x gradlew
 script: "./gradlew check"
-jdk:
-- oraclejdk8
 deploy:
   edge: true
   provider: cloudfoundry
   api: https://api.run.pivotal.io
   username: seijiohara@cmu.edu
-  password: "$Eiji1023"
-  organization: seijiohara-cmu
+  organization: seijohara-cmu
   space: development
   on:
     repo: DanielSOhara27/Image-Gallery-Application
     branch: hw2
+jdk:
+- oraclejdk8
