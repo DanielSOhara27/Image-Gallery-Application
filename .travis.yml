@@ -10,4 +10,3 @@ deploy:
   username: seijohara@cmu.edu
 on:
  repo: DanielSOhara27/Image-Gallery-Application
- branch: hw2
