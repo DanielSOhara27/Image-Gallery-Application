@@ -9,5 +9,4 @@ deploy:
   space: development
   username: seijohara@cmu.edu
 on:
-  branch: hw2
-  repo: DanielSOhara27/Image-Gallery-Application
+ repo: DanielSOhara27/Image-Gallery-Application/tree/hw2
