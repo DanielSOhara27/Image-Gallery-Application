@@ -2,16 +2,16 @@ language: java
 before_install:
 - chmod +x gradlew
 script: "./gradlew check"
+jdk:
+- oraclejdk8
 deploy:
+  edge: true
   provider: cloudfoundry
   api: https://api.run.pivotal.io
   username: seijiohara@cmu.edu
-  password:
-    secure: deMSbCI8RDZD1h+B2degN7+N0GnXyQ9GGfZoSOvRYt8lASYkjirM4G8GxY+DUSD5aA/fL8padbD2jqnZiMftSevEZomLDcr+pwWTgy7XJCd1AUCixSxPLPks844phU3bEs7EWH/VR5qmvV4sHYg/AqyXNiZx/v9j1WDMtxQYjNwJ7Il5sv+BFG4vQAoJ6MRaYjVM/1TzlByg+TOEna4M5DafLyUumWORT8ArE3bzlXSf/07Ry0uToLgZM7Pq3uKK2ATKK7ErhBrhbDdmHdZ52fbp3o/0imNCpnNSB/5/K2DTKixcii0LBgElS/rocx7EHs3rPJ2XyaUMiGYLWjuJaJ+AAVmActR0ioG0juxGsRRqih38cGCETcVaXKgmhKifYy7K2sdpL4QriBhFI+9K5YDImExR8wqbMeoNj3DJ3XjUFNb1UZ5wRsWeprNeoU3MzRCH+gEb8UlNLny67iBwMvj2VvEDOMh9NPYyfqv9Am3cc41jJo2UaCdBhU0B54jQv+jwKSdrAZ6LJjs++jZmXeR80JMqyVpkTiWK6KRTVJqTa+N9511GoeIEJCtMvKRyn9AymbdanBH/eTIjnuAbhLUtECc9GuXi5IiId+J8clw8eyE9zxXzqE9rfWc4rNhikpZCzodSbICbSOCWZBZCNnpZmbLgfW2RrMtrqg00nyY=
-  organization: seijohara-cmu
+  password: "$Eiji1023"
+  organization: seijiohara-cmu
   space: development
   on:
     repo: DanielSOhara27/Image-Gallery-Application
     branch: hw2
-jdk:
-- oraclejdk8
