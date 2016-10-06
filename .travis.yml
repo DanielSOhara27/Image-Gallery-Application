@@ -1,6 +1,6 @@
 language: java
 before_install:
-- chomod +x gradlew
+- chmod +x gradlew
 script: "./gradlew check"
 deploy:
   edge: true
