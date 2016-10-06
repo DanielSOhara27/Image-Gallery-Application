@@ -4,9 +4,10 @@ deploy:
   edge: true
   api: https://api.run.pivotal.io
   organization: seijiohara-cmu
+  username: seijohara@cmu.edu
   password: cloud123-CLASS
   provider: cloudfoundry
   space: development
-  username: seijohara@cmu.edu
+
 true:
   repo: DanielSOhara27/Image-Gallery-Application
