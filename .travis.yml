@@ -3,14 +3,13 @@ before_install:
 - chmod +x gradlew
 script: "./gradlew check"
 deploy:
-  edge: true
   provider: cloudfoundry
   api: https://api.run.pivotal.io
   username: seijiohara@cmu.edu
   password:
-    secure: AnlLj5/6oy6OOYx9FWWbxW8CXzrVD1ZRj3vMnWpXTLhUmje1O0/RgsY+XcasEDQkYOAZcKT9FmL+oEyUIfSQRtb3PPVYVPXGIpnOqvZyOZo5eJ4fkHEwzTWumMGw166cP2A6Vcq0Zz1n3oYXdiE1k4TIGPv/9F+kp6IlrQfidhmbaGEnxEH2SQC6FWGsNiShUTpqffsEFM9NQ0JY2IxFPYBNiVdmlNtkUKlFMXXBRSQdD0XtGabFZZ12BtFQcKZspoDcI4GuZh5MH4i4gLh8DiI4Cnrcx2tSiHXTHeaFQ1z6bhyMw0r1kaRoGAscTB42hqx48cXmv+BBjdYErCBvPBQbXdaTKeU0lvYTOkw+0p1eLhOTXQqcfbOPGGwrtvv5dpZ29mKx6DokwNrtsbMz0hZOML2o+703Zm69pNPagXUF66nxvUtx2xBTsRhSkORPjGm+PMXxsWgEVrPqLn+0dGaSfGT5Wvv15T8t9m2FkOsHNkZ9XmKakW2AguHkyRhBecxOrfvz7y2LJnWA8z6raAh4F7mocqY1/4Ymm81gnZ3j96gbA5s2ZAHFStSCno4PE/KdW3Wl23d/742ig/XyVP6oVAfYOIQ6zPhi+C9zqCTIGgK+S8pO+wU+hbsM2+Hw33UWUReFWm2u6h66pHYW6zbFeWym6INWCuOQX1w2HDY=
-  organization: seijiohara-cmu
-  space: deployment
+    secure: deMSbCI8RDZD1h+B2degN7+N0GnXyQ9GGfZoSOvRYt8lASYkjirM4G8GxY+DUSD5aA/fL8padbD2jqnZiMftSevEZomLDcr+pwWTgy7XJCd1AUCixSxPLPks844phU3bEs7EWH/VR5qmvV4sHYg/AqyXNiZx/v9j1WDMtxQYjNwJ7Il5sv+BFG4vQAoJ6MRaYjVM/1TzlByg+TOEna4M5DafLyUumWORT8ArE3bzlXSf/07Ry0uToLgZM7Pq3uKK2ATKK7ErhBrhbDdmHdZ52fbp3o/0imNCpnNSB/5/K2DTKixcii0LBgElS/rocx7EHs3rPJ2XyaUMiGYLWjuJaJ+AAVmActR0ioG0juxGsRRqih38cGCETcVaXKgmhKifYy7K2sdpL4QriBhFI+9K5YDImExR8wqbMeoNj3DJ3XjUFNb1UZ5wRsWeprNeoU3MzRCH+gEb8UlNLny67iBwMvj2VvEDOMh9NPYyfqv9Am3cc41jJo2UaCdBhU0B54jQv+jwKSdrAZ6LJjs++jZmXeR80JMqyVpkTiWK6KRTVJqTa+N9511GoeIEJCtMvKRyn9AymbdanBH/eTIjnuAbhLUtECc9GuXi5IiId+J8clw8eyE9zxXzqE9rfWc4rNhikpZCzodSbICbSOCWZBZCNnpZmbLgfW2RrMtrqg00nyY=
+  organization: seijohara-cmu
+  space: development
   on:
     repo: DanielSOhara27/Image-Gallery-Application
     branch: hw2
