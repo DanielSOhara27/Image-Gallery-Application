@@ -13,7 +13,7 @@ deploy:
   provider: cloudfoundry
   api: https://api.run.pivotal.io
   username: seijiohara@cmu.edu
-  password: "$coobyDoo123"
+  password: $coobyDoo123
   organization: seijohara-cmu
   space: development
   on:
